@@ -8,7 +8,7 @@ services:
     volumes:
       - .:/app:delegated
     ports:
-      - 8888:80
+      - 8889:80
 
   php-fpm:
     container_name: testing__php-fpm
