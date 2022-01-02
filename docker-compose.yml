@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+
+  nginx:
+    container_name: testing__nginx
+    build: ./docker/nginx
+    volumes:
+      - .:/app:delegated
+    ports:
+      - 8888:80
+
+  php-fpm:
+    container_name: testing__php-fpm
+    build: ./docker/php-fpm
+    volumes:
+      - .:/app:delegated
+    ports:
+      - 9001:9000
+
+  php-cli:
+    container_name: testing__php-cli
+    build: ./docker/php-cli
+    volumes:
+      - .:/app:delegated
+      - composer_cache:/home/appuser/.composer/cache:delegated
+
+  mysql:
+      container_name: testing__mysql
+      build: ./docker/mysql
+      volumes:
+          - mysql_data:/var/lib/mysql:delegated
+      command: --sql_mode=""
+      environment:
+          MYSQL_USER: ${DB_USERNAME}
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_PASSWORD: ${DB_PASSWORD}
+          MYSQL_DATABASE: ${DB_DATABASE}
+          SERVICE_NAME: mysql
+          TZ: Asia/Baku
+      restart: unless-stopped
+      tty: true
+      ports:
+          - 3308:3306
+
+volumes:
+  composer_cache:
+  mysql_data:
