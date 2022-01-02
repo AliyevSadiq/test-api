@@ -29,9 +29,14 @@ $ make app-init
 ```
 Configure database connection
 
+Generate key for .env file
+```console
+$ make key-generate
+```
+
 Migrate tables
 ```console
-$ make migrate-fresh
+$ make app-migrate
 ```
 Generate fake data
 ```console
