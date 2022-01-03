@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Virtual;
 
 /**
@@ -12,7 +11,6 @@ namespace App\Virtual;
  *     )
  * )
  */
-
 class PostStore
 {
     /**
@@ -34,5 +32,4 @@ class PostStore
      * )
      */
     public string $description;
-
 }

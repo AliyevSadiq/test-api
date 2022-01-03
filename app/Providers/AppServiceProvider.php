@@ -2,10 +2,7 @@
 
 namespace App\Providers;
 
-use App\Commands\Post\PostCommand;
-use App\Handler\Post\PostHandler;
 use App\Http\Controllers\Api\PostController;
-use App\Service\CommentRepository;
 use App\Service\InterfaceRepository;
 use App\Service\PostRepository;
 use Illuminate\Support\ServiceProvider;

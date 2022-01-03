@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-
 class PostRepository implements InterfaceRepository
 {
-
     public function save($model, $fields)
     {
-         $model->setTitle($fields['title'])
+        $model->setTitle($fields['title'])
             ->setDescription($fields['description'])
             ->save();
 
@@ -19,6 +17,6 @@ class PostRepository implements InterfaceRepository
 
     public function delete($model)
     {
-       $model->delete();
+        $model->delete();
     }
 }

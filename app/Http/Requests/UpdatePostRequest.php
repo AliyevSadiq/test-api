@@ -26,9 +26,9 @@ class UpdatePostRequest extends FormRequest
     {
 
         return [
-            'title'=>['required',Rule::unique('posts')->ignore($this->post)],
-            'description'=>'required',
-            ];
+            'title' => ['required', Rule::unique('posts')->ignore($this->post)],
+            'description' => 'required',
+        ];
 
     }
 }

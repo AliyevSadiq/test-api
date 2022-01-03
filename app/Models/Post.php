@@ -62,7 +62,4 @@ class Post extends Model
     {
         return ucfirst($value);
     }
-
-
-
 }

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-
-use App\Service\InterfaceRepository;
-use App\Http\Requests\{StorePostRequest,UpdatePostRequest};
+use App\Http\Requests\{StorePostRequest, UpdatePostRequest};
 use App\Http\Resources\PostResource;
 use App\Models\Post;
-use Illuminate\Http\{JsonResponse,Response};
+use App\Service\InterfaceRepository;
+use Illuminate\Http\{JsonResponse, Response};
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class PostController extends ApiController
@@ -19,7 +18,6 @@ class PostController extends ApiController
     {
         $this->repository = $repository;
     }
-
 
     /**
      * @OA\Get(
@@ -58,7 +56,7 @@ class PostController extends ApiController
      */
     public function store(StorePostRequest $request)
     {
-        $data=$this->repository->save(new Post(),$request->validated());
+        $data = $this->repository->save(new Post(), $request->validated());
         return (new PostResource($data))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
@@ -119,8 +117,7 @@ class PostController extends ApiController
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-
-        $data=$this->repository->save($post,$request->validated());
+        $data = $this->repository->save($post, $request->validated());
         return (new PostResource($data))
             ->response()
             ->setStatusCode(Response::HTTP_ACCEPTED);
