@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\{StorePostRequest, UpdatePostRequest};
@@ -34,7 +36,7 @@ class PostController extends ApiController
      */
     public function index(): AnonymousResourceCollection
     {
-        return PostResource::collection(Post::paginate(10));
+        return PostResource::collection($this->repository->getAll());
     }
 
     /**

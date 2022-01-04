@@ -4,6 +4,9 @@ namespace App\Service;
 
 interface InterfaceRepository
 {
-   public function save($model,$fields);
-   public function delete($model);
+    public function getAll(int $limit = 10);
+
+    public function save($model, array $fields);
+
+    public function delete($model);
 }
