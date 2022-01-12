@@ -8,7 +8,6 @@ use App\Models\Post;
 
 class PostRepository implements InterfaceRepository
 {
-
     public function getAll(int $limit = 10)
     {
         return Post::paginate($limit);
