@@ -36,7 +36,7 @@ class PostController extends ApiController
      */
     public function index(): AnonymousResourceCollection
     {
-        return PostResource::collection($this->repository->getAll());
+        return PostResource::collection($this->repository::getAll());
     }
 
     /**
@@ -58,7 +58,7 @@ class PostController extends ApiController
      */
     public function store(StorePostRequest $request)
     {
-        $data = $this->repository->save(new Post(), $request->validated());
+        $data = $this->repository::save(new Post(), $request->validated());
         return (new PostResource($data))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);

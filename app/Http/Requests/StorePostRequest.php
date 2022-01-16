@@ -26,6 +26,7 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|unique:posts',
             'description' => 'required',
+            'video_url' => 'nullable|url',
         ];
     }
 }

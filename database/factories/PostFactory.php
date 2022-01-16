@@ -14,9 +14,9 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'title'=>$this->faker->unique(2)->text(20),
-            'description'=>$this->faker->paragraph,
-
+            'title'=>$this->faker->unique()->text(10),
+            'description'=>$this->faker->unique()->text(100),
+            'video_url'=>$this->faker->url,
         ];
     }
 }
