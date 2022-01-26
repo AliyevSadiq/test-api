@@ -53,5 +53,6 @@ jobs:
           paths:
             - node_modules
 
+      - run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - run: php artisan key:generate
       - run: php artisan test
