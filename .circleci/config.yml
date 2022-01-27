@@ -63,9 +63,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Git pull request
+          name: Git fetch all
           command: |
-            cd ~/test-api && git pull origin master
+            cd ~/test-api && git fetch
 #  deploy:
 #    docker:
 #        # Specify the version you desire here
