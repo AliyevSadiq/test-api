@@ -56,3 +56,15 @@ jobs:
       - run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - run: php artisan key:generate
       - run: php artisan test
+    deploy:
+      working_directory: ~/test-api
+      steps:
+        - checkout
+        - run:
+            name: Deploy
+            command: |
+              git pull origin master
+#        - run:
+#            name: Run docker
+#            command: |
+#              docker-compose run --rm php-cli php artisan migrate:fresh
