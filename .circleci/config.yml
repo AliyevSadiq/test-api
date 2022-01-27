@@ -57,6 +57,9 @@ jobs:
       - run: php artisan key:generate
       - run: php artisan test
     deploy:
+      docker:
+        # Specify the version you desire here
+        - image: circleci/php:8.0-node-browsers
       working_directory: ~/test-api
       steps:
         - checkout
