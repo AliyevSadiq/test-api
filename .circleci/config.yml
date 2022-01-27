@@ -63,13 +63,17 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Git configuration global
+          command: |
+            git config --global user.name "AliyevSadiq" && git config --global user.email "sadiq.eliyev1995@bk.ru"
+      - run:
           name: Git fetch all
           command: |
             cd ~/test-api && git fetch
       - run:
           name: Git pull request
           command: |
-            cd ~/test-api && git config --global user.name "AliyevSadiq" && git config --global user.email "sadiq.eliyev1995@bk.ru" && git config pull.rebase true && git pull origin master
+            cd ~/test-api && git config pull.rebase true && git pull origin master
 #  deploy:
 #    docker:
 #        # Specify the version you desire here
