@@ -66,6 +66,10 @@ jobs:
           name: Git fetch all
           command: |
             cd ~/test-api && git fetch
+      - run:
+          name: Git pull request
+          command: |
+            cd ~/test-api && git pull origin master
 #  deploy:
 #    docker:
 #        # Specify the version you desire here
