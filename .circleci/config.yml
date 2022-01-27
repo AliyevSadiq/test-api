@@ -65,7 +65,7 @@ jobs:
       - run:
           name: Git pull request
           command: |
-            git pull origin master
+            cd ~/test-api && git pull origin master
 #  deploy:
 #    docker:
 #        # Specify the version you desire here
