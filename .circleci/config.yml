@@ -65,11 +65,11 @@ jobs:
       - run:
           name: Git configuration global
           command: |
-            git config --global user.name "AliyevSadiq" && git config --global user.email "sadiq.eliyev1995@bk.ru"
+            git config --global user.name "AliyevSadiq" && git config --global user.email "sadiq.eliyev1995@bk.ru" && git remote set-url origin https://github.com/AliyevSadiq/test-api
       - run:
           name: Git pull request
           command: |
-            cd ~/test-api && git config pull.rebase true && git pull origin master
+            cd ~/test-api && git config pull.rebase true && git fetch origin master && git pull origin master && git merge origin master
 #  deploy:
 #    docker:
 #        # Specify the version you desire here
