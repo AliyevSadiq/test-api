@@ -69,7 +69,7 @@ jobs:
       - run:
           name: Git pull request
           command: |
-            cd ~/test-api && git config pull.rebase true && git fetch origin master
+            cd ~/test-api && git config pull.rebase true && git fetch origin master && git pull origin master
 #  deploy:
 #    docker:
 #        # Specify the version you desire here
