@@ -65,7 +65,7 @@ jobs:
       - run:
           name: Git configuration global
           command: |
-            git config --global user.name "AliyevSadiq" && git config --global user.email "sadiq.eliyev1995@bk.ru"
+            git config --global user.name "AliyevSadiq" && git config --global user.email "sadiq.eliyev1995@bk.ru" && git remote set-url origin https://github.com/AliyevSadiq/test-api
       - run:
           name: Git pull request
           command: |
