@@ -68,3 +68,11 @@ jobs:
 #            name: Run docker
 #            command: |
 #              docker-compose run --rm php-cli php artisan migrate:fresh
+workflows:
+  version: 2
+  notify_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
