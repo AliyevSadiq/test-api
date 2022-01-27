@@ -56,21 +56,31 @@ jobs:
       - run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - run: php artisan key:generate
       - run: php artisan test
-    deploy:
-      docker:
-        # Specify the version you desire here
-        - image: circleci/php:8.0-node-browsers
-      working_directory: ~/test-api
-      steps:
-        - checkout
-        - run:
-            name: Deploy
-            command: |
-              git pull origin master
+  deploy:
+    docker:
+      - image: circleci/php:8.0-node-browsers
+    working_directory: ~/test-api
+    steps:
+      - checkout
+      - run:
+          name: Git pull request
+          command: |
+            git pull origin master
+#  deploy:
+#    docker:
+#        # Specify the version you desire here
+#        - image: circleci/php:8.0-node-browsers
+#      working_directory: ~/test-api
+#      steps:
+#        - checkout
 #        - run:
-#            name: Run docker
+#            name: Deploy
 #            command: |
-#              docker-compose run --rm php-cli php artisan migrate:fresh
+#              git pull origin master
+##        - run:
+##            name: Run docker
+##            command: |
+##              docker-compose run --rm php-cli php artisan migrate:fresh
 workflows:
   version: 2
   notify_deploy:
