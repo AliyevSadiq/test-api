@@ -74,7 +74,7 @@ jobs:
       - run:
           name: Deploy
           command: |
-            dep deploy http://167.71.46.188:8889
+            dep run http://167.71.46.188:8889
 #      - run:
 #          name: Git configuration global
 #          command: |
