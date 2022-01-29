@@ -65,6 +65,16 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCdYgZ89YSKbwjwfWF8ZsPOgEfrEmh+XIA27XZbv7NWIh5RPV4xKBpEsK+xGMW2efTcVom3I93wauvXH9rps/CW8JPaYNLbbKg7kPgTESgLU6xqko20UpAGutnh132dFoqkW22xOTKTkwynAEedTswQML0ejoC4D1x4Dd08SCNJuFhktfFp+DHe2vjlUvYWdpesqYqTF9gpmRLP6/R3XoyBSpwwqwAtSYoG0cLeWJNte8zoptnl/Uhqw3w2rcOGnAfeoXOjtPMRQWZjMof8MrgLxI5lEgknnY5SYFhaM1lq+Sz8lExvcF3xknCLJ+aFXU1K72XcJuNsZ0So2nCJIWy1cYFPnKnF93+zU5STSbnUzKPj6lLYJYx5zbpNpX8bXEpFITcrfIvy+m2fi6XF9XO7RZWBil11oyAruHR+PJfEMWvfHOKMuPhd4r9md4GjvHj46UXzq9447nGclJVfi8903PuHrJX8X8ZcDCqIuUCToMUNwDRGYcfuQPlgNrPigaU= circleci@app-server"
+      - run:
+          name: Install Deployer
+          command: |
+            curl -LO https://deployer.org/deployer.phar
+            sudo mv deployer.phar /usr/local/bin/dep
+            sudo chmod +x /usr/local/bin/dep
+      - run:
+          name: Deploy
+          command: |
+            dep deploy http://167.71.46.188:8889
 #      - run:
 #          name: Git configuration global
 #          command: |
