@@ -62,14 +62,17 @@ jobs:
     working_directory: ~/test-api
     steps:
       - checkout
-      - run:
-          name: Git configuration global
-          command: |
-            git config --global user.name "AliyevSadiq" && git config --global user.email "sadiq.eliyev1995@bk.ru" && git remote set-url origin https://github.com/AliyevSadiq/test-api
-      - run:
-          name: Git pull request
-          command: |
-            cd ~/test-api && git config pull.rebase true && git fetch origin master && git pull origin master && git merge  master
+      - add_ssh_keys:
+          fingerprints:
+            - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCdYgZ89YSKbwjwfWF8ZsPOgEfrEmh+XIA27XZbv7NWIh5RPV4xKBpEsK+xGMW2efTcVom3I93wauvXH9rps/CW8JPaYNLbbKg7kPgTESgLU6xqko20UpAGutnh132dFoqkW22xOTKTkwynAEedTswQML0ejoC4D1x4Dd08SCNJuFhktfFp+DHe2vjlUvYWdpesqYqTF9gpmRLP6/R3XoyBSpwwqwAtSYoG0cLeWJNte8zoptnl/Uhqw3w2rcOGnAfeoXOjtPMRQWZjMof8MrgLxI5lEgknnY5SYFhaM1lq+Sz8lExvcF3xknCLJ+aFXU1K72XcJuNsZ0So2nCJIWy1cYFPnKnF93+zU5STSbnUzKPj6lLYJYx5zbpNpX8bXEpFITcrfIvy+m2fi6XF9XO7RZWBil11oyAruHR+PJfEMWvfHOKMuPhd4r9md4GjvHj46UXzq9447nGclJVfi8903PuHrJX8X8ZcDCqIuUCToMUNwDRGYcfuQPlgNrPigaU= circleci@app-server"
+#      - run:
+#          name: Git configuration global
+#          command: |
+#            git config --global user.name "AliyevSadiq" && git config --global user.email "sadiq.eliyev1995@bk.ru" && git remote set-url origin https://github.com/AliyevSadiq/test-api
+#      - run:
+#          name: Git pull request
+#          command: |
+#            cd ~/test-api && git config pull.rebase true && git fetch origin master && git pull origin master && git merge  master
 #  deploy:
 #    docker:
 #        # Specify the version you desire here
