@@ -77,9 +77,13 @@ jobs:
           command: |
             git config pull.rebase true && git fetch origin master && git pull origin master && git merge  master
       - run:
+          name: Run composer
+          command: |
+            composer install
+      - run:
           name: Run migration
           command: |
-            php artisan migrate:fresh
+            php artisan migrate
 #  deploy:
 #    docker:
 #        # Specify the version you desire here
