@@ -56,54 +56,11 @@ jobs:
       - run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - run: php artisan key:generate
       - run: php artisan test
-  deploy:
-    docker:
-      - image: circleci/php:8.0-node-browsers
-      - image: circleci/mysql:8.0
-        environment:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: ${DB_DATABASE}
-          MYSQL_USER: ${DB_USERNAME}
-          MYSQL_PASSWORD: ${DB_PASSWORD}
-    working_directory: ~/test-api
-    steps:
-      - checkout
-      - run:
-          name: Git configuration global
-          command: |
-            git config --global user.name "AliyevSadiq" && git config --global user.email "sadiq.eliyev1995@bk.ru" && git remote set-url origin https://github.com/AliyevSadiq/test-api
-      - run:
-          name: Git pull request
-          command: |
-            git config pull.rebase true && git fetch origin master && git pull origin master && git merge  master
-      - run:
-          name: Run composer
-          command: |
-            composer install
-      - run:
-          name: Run migration
-          command: |
-            docker-compose run --rm php-cli php artisan migrate --force
-#  deploy:
-#    docker:
-#        # Specify the version you desire here
-#        - image: circleci/php:8.0-node-browsers
-#      working_directory: ~/test-api
-#      steps:
-#        - checkout
-#        - run:
-#            name: Deploy
-#            command: |
-#              git pull origin master
-##        - run:
-##            name: Run docker
-##            command: |
-##              docker-compose run --rm php-cli php artisan migrate:fresh
 workflows:
   version: 2
   notify_deploy:
     jobs:
-      - build
-      - deploy:
-          requires:
-            - build
+      - build:
+          filters:
+            branches:
+              only: master
