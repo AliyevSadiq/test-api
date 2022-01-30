@@ -58,11 +58,10 @@ jobs:
       - run: php artisan test
 workflows:
   version: 2
-  my-workflow:
+  notify_deploy:
     when:
       or:
         - equal: [ main, << pipeline.git.branch >> ]
-  notify_deploy:
     jobs:
       - build:
           filters:
