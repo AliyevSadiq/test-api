@@ -65,11 +65,15 @@ jobs:
       - run:
           name: Git configuration global
           command: |
-            git config --global user.name "AliyevSadiq" && git config --global user.email "sadiq.eliyev1995@bk.ru"
+             git remote set-url origin https://github.com/AliyevSadiq/test-api
       - run:
           name: Git pull request
           command: |
-            git config pull.rebase false && git pull origin master
+            git config pull.rebase true && git fetch origin master && git pull origin master && git merge  master
+#      - run:
+#          name: Run docker
+#          command: |
+#            docker-compose run --rm php-cli php artisan migrate:fresh
 #  deploy:
 #    docker:
 #        # Specify the version you desire here
