@@ -79,7 +79,7 @@ jobs:
       - run:
           name: Run migration
           command: |
-            php-cli php artisan migrate:fresh
+            php artisan migrate:fresh
 #  deploy:
 #    docker:
 #        # Specify the version you desire here
