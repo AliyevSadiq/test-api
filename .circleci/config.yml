@@ -59,21 +59,27 @@ jobs:
   deploy:
     docker:
       - image: circleci/php:8.0-node-browsers
+      - image: circleci/mysql:8.0-node-browsers
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: ${DB_DATABASE}
+          MYSQL_USER: ${DB_USERNAME}
+          MYSQL_PASSWORD: ${DB_PASSWORD}
     working_directory: ~/test-api
     steps:
       - checkout
       - run:
           name: Git configuration global
           command: |
-             git remote set-url origin https://github.com/AliyevSadiq/test-api
+            git config --global user.name "AliyevSadiq" && git config --global user.email "sadiq.eliyev1995@bk.ru" && git remote set-url origin https://github.com/AliyevSadiq/test-api
       - run:
           name: Git pull request
           command: |
             git config pull.rebase true && git fetch origin master && git pull origin master && git merge  master
-#      - run:
-#          name: Run docker
-#          command: |
-#            docker-compose run --rm php-cli php artisan migrate:fresh
+      - run:
+          name: Run migration
+          command: |
+            php-cli php artisan migrate:fresh
 #  deploy:
 #    docker:
 #        # Specify the version you desire here
