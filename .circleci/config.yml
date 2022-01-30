@@ -83,7 +83,7 @@ jobs:
       - run:
           name: Run migration
           command: |
-            php artisan migrate --force
+            docker-compose run --rm php-cli php artisan migrate --force
 #  deploy:
 #    docker:
 #        # Specify the version you desire here
