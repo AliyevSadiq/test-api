@@ -69,7 +69,7 @@ jobs:
       - run:
           name: Git pull request
           command: |
-            git pull origin master
+            git config pull.rebase false && git pull origin master
 #  deploy:
 #    docker:
 #        # Specify the version you desire here
