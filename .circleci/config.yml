@@ -69,4 +69,7 @@ workflows:
   notify_deploy:
     jobs:
       - build
+      - deploy:
+          requires:
+            - build
 
