@@ -56,6 +56,14 @@ jobs:
       - run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - run: php artisan key:generate
       - run: php artisan test
+  deploy:
+    machine: # executor type
+      image: ubuntu-2004:202010-01
+    steps:
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh $SSH_USER@$SSH_HOST
 workflows:
   version: 2
   notify_deploy:
