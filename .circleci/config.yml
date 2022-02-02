@@ -60,10 +60,10 @@ jobs:
     machine: # executor type
       image: ubuntu-2004:202010-01
     steps:
-      - run:
-          name: Deploy Over SSH
-          command: |
-            ssh -o StrictHostkeyChecking=no $USER@$IP
+#      - run:
+#          name: Deploy Over SSH
+#          command: |
+#            ssh  $USER@$IP
       - run:
           name: Go to directory
           command: |
