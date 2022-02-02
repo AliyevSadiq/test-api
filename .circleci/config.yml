@@ -64,6 +64,22 @@ jobs:
           name: Deploy Over SSH
           command: |
             ssh $USER@$IP
+      - run:
+          name: Go to directory
+          command: |
+            cd  ~/test-api
+      - run:
+          name: Git fetch
+          command: |
+            git fetch origin master
+      - run:
+          name: Git pull
+          command: |
+            git pull origin master
+      - run:
+          name: Git merge
+          command: |
+            git merge master
 workflows:
   version: 2
   notify_deploy:
