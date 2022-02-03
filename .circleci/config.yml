@@ -60,26 +60,26 @@ jobs:
     machine: # executor type
       image: ubuntu-2004:202010-01
     steps:
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh  $USER@$IP "cd  ~/test-api && git fetch origin master && git pull origin master && git merge master"
 #      - run:
-#          name: Deploy Over SSH
+#          name: Go to directory
 #          command: |
-#            ssh  $USER@$IP
-      - run:
-          name: Go to directory
-          command: |
-            cd  ~/test-api
-      - run:
-          name: Git fetch
-          command: |
-            git fetch origin master
-      - run:
-          name: Git pull
-          command: |
-            git pull origin master
-      - run:
-          name: Git merge
-          command: |
-            git merge master
+#            cd  ~/test-api
+#      - run:
+#          name: Git fetch
+#          command: |
+#            git fetch origin master
+#      - run:
+#          name: Git pull
+#          command: |
+#            git pull origin master
+#      - run:
+#          name: Git merge
+#          command: |
+#            git merge master
 workflows:
   version: 2
   notify_deploy:
