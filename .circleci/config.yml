@@ -56,9 +56,36 @@ jobs:
       - run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - run: php artisan key:generate
       - run: php artisan test
+  deploy:
+    machine: # executor type
+      image: ubuntu-2004:202010-01
+    steps:
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh -oStrictHostKeyChecking=no -v  $USER@$IP "cd  ~/test-api && git fetch origin master && git pull origin master && git merge master"
+#      - run:
+#          name: Go to directory
+#          command: |
+#            cd  ~/test-api
+#      - run:
+#          name: Git fetch
+#          command: |
+#            git fetch origin master
+#      - run:
+#          name: Git pull
+#          command: |
+#            git pull origin master
+#      - run:
+#          name: Git merge
+#          command: |
+#            git merge master
 workflows:
   version: 2
   notify_deploy:
     jobs:
       - build
+      - deploy:
+          requires:
+            - build
 
