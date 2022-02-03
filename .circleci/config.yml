@@ -63,7 +63,7 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh -oStrictHostKeyChecking=no -v  $USER@$IP "./deploy_project.sh"
+            ssh -oStrictHostKeyChecking=no -v  $USER@$IP "cd  ~/test-api && git fetch origin master && git pull origin master && git merge master && docker-compose run --rm php-cli php artisan migrate"
 workflows:
   version: 2
   notify_deploy:
