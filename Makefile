@@ -18,7 +18,7 @@ docker-build:
 app-init: app-install-composer
 
 app-install-composer:
-	docker-compose run --rm php-cli composer install
+	docker-compose run --rm php-cli sudo composer install
 
 app-migrate:
 	docker-compose run --rm php-cli php artisan migrate
